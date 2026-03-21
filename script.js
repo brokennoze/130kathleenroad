@@ -215,5 +215,64 @@ document.addEventListener('DOMContentLoaded', () => {
             prevImage();
         }
     });
+    // === Interactive Floorplan Logic ===
+    const hotspots = document.querySelectorAll('.fp-hotspot');
+    const fpContainer = document.getElementById('fpContainer');
+    const flythroughViewer = document.getElementById('flythroughViewer');
+    const flythroughImage = document.getElementById('flythroughImage');
+    const flythroughClose = document.getElementById('flythroughClose');
+
+    if (hotspots.length > 0 && fpContainer && flythroughViewer) {
+        hotspots.forEach(hotspot => {
+            hotspot.addEventListener('click', (e) => {
+                const imageSrc = hotspot.getAttribute('data-image');
+                
+                // Get the center coordinates from inline styles for a stable zoom
+                const leftPercent = hotspot.style.left;
+                const topPercent = hotspot.style.top;
+                
+                // Set transform origin and scale (zoom in)
+                fpContainer.style.transformOrigin = `${leftPercent} ${topPercent}`;
+                
+                // Scale factor for fly-through feel
+                fpContainer.style.transform = 'scale(4)';
+                
+                // Set the image src
+                flythroughImage.src = imageSrc;
+                
+                // Fade in immersive viewer after a slight delay to allow zoom to start
+                setTimeout(() => {
+                    flythroughViewer.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }, 400); // Wait for zoom to gain momentum
+            });
+        });
+
+        const closeFlythrough = () => {
+            flythroughViewer.classList.remove('active');
+            
+            // Wait for fade out then reset zoom
+            setTimeout(() => {
+                fpContainer.style.transform = 'scale(1)';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                
+                // Clear image src after reset transition
+                setTimeout(() => {
+                    flythroughImage.src = '';
+                }, 1200);
+            }, 800); // Wait for viewer to fade out completely
+        };
+
+        if (flythroughClose) {
+            flythroughClose.addEventListener('click', closeFlythrough);
+        }
+
+        // Integrate with existing Esc key handler (or add new one)
+        window.addEventListener('keydown', (e) => {
+            if ((e.key === 'Escape' || e.keyCode === 27) && flythroughViewer.classList.contains('active')) {
+                closeFlythrough();
+            }
+        });
+    }
 
 });

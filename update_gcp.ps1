@@ -23,7 +23,7 @@ else {
 Write-Host "`n[2/2] Syncing website files..." -ForegroundColor Yellow
 
 # Upload HTML, CSS, JS
-gcloud storage cp *.html gs://$BucketName/
+gcloud storage cp *.html gs://$BucketName/ --cache-control="no-cache, max-age=0"
 gcloud storage cp styles.css gs://$BucketName/
 gcloud storage cp script.js gs://$BucketName/
 # Upload images folder recursively

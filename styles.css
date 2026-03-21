@@ -361,6 +361,7 @@ img {
   margin-bottom: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 24px;
+  font-size: 0.5rem;
 }
 
 .stat {
@@ -1158,4 +1159,223 @@ body.gallery-page .mobile-menu-btn {
     height: 45px;
     font-size: 1.2rem;
   }
+}
+
+/* === PRICE STYLING === */
+.price-section {
+  padding: 100px 0;
+  background-color: var(--bg-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.price-display {
+  margin: 40px 0;
+}
+
+.price-label {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.price-value {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+  font-style: italic;
+  transition: var(--transition);
+}
+
+.price-value:hover {
+  transform: scale(1.02);
+}
+
+.price-footer {
+  margin-top: 32px;
+  color: var(--text-light);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .price-value {
+    font-size: 4rem;
+  }
+}
+
+/* === INTERACTIVE FLOORPLAN === */
+.interactive-floorplan-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.interactive-floorplan-container {
+  position: relative;
+  width: 100%;
+  transform-origin: center center;
+  transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1);
+  /* Elegant smooth zoom */
+}
+
+.fp-base-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fp-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.fp-marker {
+  width: 20px;
+  height: 20px;
+  background-color: var(--secondary-color);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.fp-marker::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+  animation: pulseMarker 2s infinite;
+}
+
+@keyframes pulseMarker {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.fp-label {
+  background: var(--text-dark);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+  white-space: nowrap;
+  opacity: 0.9;
+  transform: translateY(10px);
+  transition: var(--transition);
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fp-hotspot:hover {
+  transform: translate(-50%, -55%);
+}
+
+.fp-hotspot:hover .fp-label {
+  opacity: 1;
+  background: var(--primary-color);
+}
+
+.fp-hotspot:hover .fp-marker {
+  transform: scale(1.2);
+  background-color: var(--primary-color);
+}
+
+.fp-instruction {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Flythrough Viewer */
+.flythrough-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--text-dark);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease 0.5s, visibility 1s ease 0.5s;
+  /* Delay fade in to allow zoom */
+}
+
+.flythrough-viewer.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.flythrough-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 3100;
+  transition: var(--transition);
+}
+
+.flythrough-close:hover {
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+#flythroughImage {
+  max-width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1.5s ease 0.8s, transform 3s ease 0.5s;
+}
+
+.flythrough-viewer.active #flythroughImage {
+  opacity: 1;
+  transform: scale(1);
+  /* Subtle Ken Burns effect */
 }
