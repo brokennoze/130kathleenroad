@@ -361,14 +361,14 @@ img {
   margin-bottom: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 24px;
-  font-size: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .stat {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.1rem;
+  font-size: 0.95em;
   font-weight: 500;
 }
 
