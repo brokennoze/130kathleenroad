@@ -349,33 +349,33 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="First Name" required placeholder="Jane">
+                            <input type="text" id="firstName" name="firstName" required placeholder="Jane">
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="Last Name" required placeholder="Doe">
+                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="Email" required placeholder="jane@example.com">
+                            <input type="email" id="email" name="email" required placeholder="jane@example.com">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="Phone Number" required placeholder="07123 456789">
+                            <input type="tel" id="phone" name="phone" required placeholder="07123 456789">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date">Preferred Date</label>
-                            <input type="date" id="date" name="Preferred Date" required>
+                            <input type="date" id="date" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="time">Preferred Time</label>
-                            <select id="time" name="Preferred Time" required>
+                            <select id="time" name="time" required>
                                 <option value="" disabled selected>Select a time</option>
                                 <option value="morning">Morning (9am - 12pm)</option>
                                 <option value="afternoon">Afternoon (12pm - 4pm)</option>
@@ -386,7 +386,7 @@
 
                     <div class="form-group">
                         <label for="message">Additional Notes (Optional)</label>
-                        <textarea id="message" name="Additional Notes" rows="3"
+                        <textarea id="message" name="message" rows="3"
                             placeholder="Any specific requirements or questions?"></textarea>
                     </div>
 
@@ -394,36 +394,15 @@
                     <button type="submit" class="btn-primary btn-block">Request Viewing</button>
 
                     <div id="formSuccess" class="form-success">
-                        <i class="fas fa-check-circle"></i> View request sent successfully! We will be in touch shortly
-                        to confirm.
+                        <i class="fas fa-check-circle"></i> <strong>Request Sent!</strong> Please check your email to complete the required <strong>Eligibility Questionnaire</strong> so we can confirm your viewing.
                     </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <div class="footer-logo">130 KATHLEEN RD.</div>
-                    <p>Southampton, SO19 8LN</p>
-                </div>
-                <div class="footer-contact">
-                    <a href="mailto:130kathleenroad@gmail.com" class="contact-item">
-                        <i class="fas fa-envelope"></i> 130kathleenroad@gmail.com
-                    </a>
-                    <a href="tel:07963301443" class="contact-item">
-                        <i class="fas fa-phone"></i> 07963301443
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Private Property Sale. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
@@ -436,6 +415,7 @@
         <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
     </div>
 
+    <script src="footer-loader.js"></script>
     <script src="script.js"></script>
 </body>
 

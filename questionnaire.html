@@ -1,77 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchase Eligibility Questionnaire | 130 Kathleen Road</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background-color: #1a1a1a;
+            color: white;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            font-family: 'Inter', sans-serif;
         }
+
         .questionnaire-container {
             max-width: 600px;
             width: 100%;
         }
+
         .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            background: #242424;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
         }
+
         .logo-small {
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             letter-spacing: 2px;
-            color: var(--text-dark);
+            color: #cda434;
             text-decoration: none;
             display: block;
             margin-bottom: 20px;
             text-align: center;
+            font-size: 20px;
         }
+
         .form-title {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 30px;
             text-align: center;
-            color: var(--text-dark);
+            color: white;
+            font-family: 'Outfit', sans-serif;
         }
+
         .q-group {
             margin-bottom: 25px;
         }
+
         .q-label {
             display: block;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--text-dark);
+            color: #e0e0e0;
         }
-        select, textarea, input[type="text"] {
+
+        select,
+        textarea,
+        input {
             width: 100%;
             padding: 12px 15px;
             border-radius: 10px;
-            border: 1px solid #ddd;
-            background: white;
+            border: 1px solid #444;
+            background: #1a1a1a;
+            color: white;
             font-family: inherit;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            /* Ensure padding doesn't affect width */
         }
-        select:focus, textarea:focus {
+
+        select:focus,
+        textarea:focus,
+        input:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: #cda434;
+            box-shadow: 0 0 0 2px rgba(205, 164, 52, 0.2);
         }
+
+        /* Style the file upload button */
+        input[type="file"] {
+            padding: 8px;
+            /* Slightly less padding for file input tray */
+        }
+
+        input[type="file"]::file-selector-button {
+            background: #cda434;
+            color: #1a1a1a;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #e5b842;
+        }
+
         .btn-submit {
-            background: #2c3e50;
-            color: white;
+            background: #cda434;
+            color: #1a1a1a;
             padding: 15px;
             border: none;
             border-radius: 10px;
@@ -79,48 +128,140 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
         .btn-submit:hover {
-            background: #1a252f;
+            background: #e5b842;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(205, 164, 52, 0.3);
         }
+
         .success-overlay {
             display: none;
             text-align: center;
         }
+
         .success-overlay.active {
             display: block;
         }
+
         .success-icon {
             font-size: 60px;
-            color: #27ae60;
+            color: #cda434;
             margin-bottom: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: transparent;
+            color: #cda434;
+            padding: 12px 25px;
+            border: 2px solid #cda434;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        /* Hide spin buttons for Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        /* Hide spin buttons for Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .sub-caption {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-top: -8px;
+            margin-bottom: 12px;
+            font-weight: 400;
+            line-height: 1.4;
         }
     </style>
 </head>
+
 <body>
     <div class="questionnaire-container">
         <div class="glass-panel" id="formPanel">
             <a href="index.html" class="logo-small">130 KATHLEEN RD.</a>
-            <h1 class="form-title">Purchase Eligibility</h1>
-            
+            <h1 class="form-title">Please answer whatever you're comfortable sharing</h1>
+
+            <div
+                style="background: rgba(205, 164, 52, 0.1); border-left: 3px solid #cda434; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 14px; line-height: 1.5; color: #e0e0e0;">
+                <strong style="color: #cda434; display: block; margin-bottom: 5px;">We're excited to show you 130 Kathleen Road!</strong>
+                To help us prioritize your viewing and ensure everything is ready for your move, please tell us a little more about your current position. This information helps us assist you as effectively as possible.
+            </div>
+
             <form id="eligibilityForm">
                 <input type="hidden" id="userEmail" name="email">
-                
-                <div class="q-group">
-                    <label class="q-label">Current Buyer Status</label>
-                    <select name="status" required>
-                        <option value="" disabled selected>Select your status</option>
-                        <option value="first-time">First-time Buyer</option>
-                        <option value="upsizing">Upsizing (have a property to sell)</option>
-                        <option value="downsizing">Downsizing (have a property to sell)</option>
-                        <option value="investor">Investor / Cash Buyer</option>
+
+                <div class="q-group" id="livingSituationGroup">
+                    <label class="q-label">What is your current living situation?</label>
+                    <span class="sub-caption">Are you currently renting, living with family, or do you own your home? This helps us understand your timeline.</span>
+                    <select name="livingSituation" id="livingSituation" required>
+                        <option value="" disabled selected>Select...</option>
+                        <option value="renting">Renting</option>
+                        <option value="homeowner">Homeowner</option>
+                        <option value="living-with-family">Living with family</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">I'd prefer not to say</option>
                     </select>
                 </div>
 
                 <div class="q-group">
-                    <label class="q-label">Position of Sale</label>
-                    <select name="position" required>
+                    <label class="q-label">How would you describe your buying position?</label>
+                    <span class="sub-caption">For example, are you a first-time buyer or do you have a property to sell first?</span>
+                    <select name="status" id="buyerStatus" required>
+                        <option value="" disabled selected>Select from the following...</option>
+                        <option value="first-time">First-time Buyer</option>
+                        <option id="opt-upsizing" value="upsizing">Upsizing (have a property to sell)</option>
+                        <option id="opt-downsizing" value="downsizing">Downsizing (have a property to sell)</option>
+                        <option value="investor">Investor / Cash Buyer</option>
+                    </select>
+                </div>
+
+                <!-- Conditional Section for Sellers -->
+                <div id="sellerSection"
+                    style="display: none; border: 1px dashed #444; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h3 style="color: #cda434; margin-top: 0; font-size: 18px;">Tell us about your property sale</h3>
+                    <p class="sub-caption">This helps us gauge how ready you are to proceed with a purchase.</p>
+                    <div class="q-group">
+                        <label class="q-label">Do you already have a buyer lined up?</label>
+                        <select name="hasBuyer">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="q-group">
+                        <label class="q-label">What is your buyer's position?</label>
+                        <select name="buyerPosition">
+                            <option value="n/a">Not applicable</option>
+                            <option value="mortgage-agreed">Mortgage Agreed</option>
+                            <option value="no-chain">No Chain</option>
+                            <option value="under-offer">Under Offer</option>
+                            <option value="cash-buyer">Cash Buyer</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="q-group" id="salePositionGroup">
+                    <label class="q-label">Where are you in the selling process?</label>
+                    <span class="sub-caption">If you have a home to sell, has it been listed yet?</span>
+                    <select name="position" id="salePosition" required>
                         <option value="" disabled selected>Select your position</option>
                         <option value="no-chain">No chain (nothing to sell)</option>
                         <option value="under-offer">Property under offer</option>
@@ -130,46 +271,83 @@
                     </select>
                 </div>
 
+                <div class="form-row" style="display: flex; gap: 20px;">
+                    <div class="q-group" style="flex: 1;">
+                        <label class="q-label">What deposit amount do you have available?</label>
+                        <span class="sub-caption">Please enter the percentage (%) of the purchase price you have as a deposit.</span>
+                        <input type="number" name="deposit" min="0" max="100" placeholder="e.g. 15" required>
+                    </div>
+                </div>
+
                 <div class="q-group">
-                    <label class="q-label">Do you have a Mortgage in Principle?</label>
+                    <label class="q-label">Do you have a Mortgage in Principle (AIP/MIP)?</label>
+                    <span class="sub-caption">This is a document from a lender confirming they are ready to fund your purchase.</span>
                     <select name="mortgage" required>
-                        <option value="" disabled selected>Select option</option>
-                        <option value="yes">Yes, approved</option>
-                        <option value="pending">In progress / Pending</option>
+                        <option value="" disabled selected>Select...</option>
+                        <option value="yes">Yes, I have one approved</option>
+                        <option value="pending">It's currently in progress</option>
                         <option value="no">Not yet</option>
-                        <option value="n/a">Not applicable (Cash)</option>
+                        <option value="n/a">Not applicable (Cash purchase)</option>
+                        <option value="prefer-not-to-say">I'd prefer not to say</option>
                     </select>
                 </div>
 
                 <div class="q-group">
-                    <label class="q-label">Estimated Completion Timeline</label>
+                    <label class="q-label">Have you chosen a solicitor to help with the move?</label>
+                    <span class="sub-caption">Having a solicitor ready early on can really help speed things up later.</span>
+                    <select name="solicitor" required>
+                        <option value="no">Not yet</option>
+                        <option value="yes">Yes, I've already instructed one</option>
+                        <option value="not-yet">Planning to very soon</option>
+                        <option value="prefer-not-to-say">I'd prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="q-group">
+                    <label class="q-label">Would you like to provide proof of funds now?</label>
+                    <span class="sub-caption">Providing this (optional) helps us prioritize your request. A PDF or clear photo works great.</span>
+                    <input type="file" name="proofOfFunds" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="q-group">
+                    <label class="q-label">Finally, is there a specific timeline you're aiming for?</label>
+                    <span class="sub-caption">When would be your ideal move-in date?</span>
                     <select name="timeline" required>
-                        <option value="" disabled selected>Select timeline</option>
-                        <option value="immediate">Immediate / No chain</option>
-                        <option value="1-3-months">1-3 Months</option>
-                        <option value="3-6-months">3-6 Months</option>
-                        <option value="unknown">Unknown</option>
+                        <option value="" disabled selected>Select your ideal timeline...</option>
+                        <option value="immediate">As soon as possible / No chain</option>
+                        <option value="1-3-months">Within the next 1-3 months</option>
+                        <option value="3-6-months">In 3-6 months' time</option>
+                        <option value="unknown">I'm not sure yet</option>
+                        <option value="prefer-not-to-say">I'd prefer not to say</option>
                     </select>
                 </div>
 
                 <div class="q-group">
-                    <label class="q-label">Additional Details</label>
-                    <textarea name="details" rows="4" placeholder="Any additional information about your position..."></textarea>
+                    <label class="q-label">Anything else we should know?</label>
+                    <span class="sub-caption">Feel free to add any specific requirements or details about your
+                        position.</span>
+                    <textarea name="details" rows="4" placeholder="Additional information..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submitBtn">Submit Requirements</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Finalise Viewing Request</button>
             </form>
         </div>
 
         <div class="glass-panel success-overlay" id="successPanel">
             <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-            <h2>Thank You!</h2>
-            <p>Your eligibility questionnaire has been submitted. We will review your details and be in touch shortly to confirm your viewing at 130 Kathleen Road.</p>
+            <h2>Form Submitted!</h2>
+            <p>Thank you for providing your details. Your viewing request for 130 Kathleen Road is being processed.</p>
+            <p style="color: #cda434; font-weight: 600; margin-top: 15px;">A member of our team will be in touch with
+                you within 24 hours to confirm the next steps.</p>
             <br>
-            <a href="index.html" class="btn-primary" style="display:inline-block; padding: 10px 20px;">Back to Home</a>
+            <a href="index.html" class="btn-back">Back to Home</a>
         </div>
+
+        <!-- Footer placeholder -->
+        <div id="footer-placeholder"></div>
     </div>
 
+    <script src="footer-loader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -182,25 +360,67 @@
             const formPanel = document.getElementById('formPanel');
             const successPanel = document.getElementById('successPanel');
             const submitBtn = document.getElementById('submitBtn');
+            const buyerStatus = document.getElementById('buyerStatus');
+            const sellerSection = document.getElementById('sellerSection');
+            const salePosition = document.getElementById('salePosition');
+            const salePositionGroup = document.getElementById('salePositionGroup');
+            const livingSituation = document.getElementById('livingSituation');
+
+            const optUpsizing = document.getElementById('opt-upsizing');
+            const optDownsizing = document.getElementById('opt-downsizing');
+
+            // Living Situation Logic: Hide ALL selling questions if Renting/Family
+            livingSituation.addEventListener('change', () => {
+                const isRenterOrFamily = livingSituation.value === 'renting' || livingSituation.value === 'living-with-family';
+                if (isRenterOrFamily) {
+                    // Hide Buying Status options
+                    optUpsizing.disabled = true;
+                    optDownsizing.disabled = true;
+                    if (buyerStatus.value === 'upsizing' || buyerStatus.value === 'downsizing') {
+                        buyerStatus.value = 'first-time';
+                    }
+                    // Hide Sale Position entirely
+                    salePositionGroup.style.display = 'none';
+                    salePosition.required = false;
+
+                    sellerSection.style.display = 'none';
+                } else {
+                    optUpsizing.disabled = false;
+                    optDownsizing.disabled = false;
+                    salePositionGroup.style.display = 'block';
+                    salePosition.required = true;
+                }
+            });
+
+            // Conditional Logic for Sellers
+            buyerStatus.addEventListener('change', () => {
+                if (buyerStatus.value === 'upsizing' || buyerStatus.value === 'downsizing') {
+                    sellerSection.style.display = 'block';
+                } else {
+                    sellerSection.style.display = 'none';
+                }
+            });
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
+                // Use FormData directly to support file uploads
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
 
                 try {
                     const response = await fetch('/api/submit-questionnaire', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
+                        // Note: Don't set Content-Type header when using FormData; 
+                        // the browser will set it to multipart/form-data with a boundary.
+                        body: formData
                     });
 
                     if (response.ok) {
                         formPanel.style.display = 'none';
                         successPanel.classList.add('active');
+                        window.scrollTo(0, 0);
                     } else {
                         alert('Submission failed. Please try again.');
                         submitBtn.disabled = false;
@@ -216,4 +436,5 @@
         });
     </script>
 </body>
+
 </html>

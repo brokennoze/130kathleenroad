@@ -901,6 +901,23 @@ body.gallery-page .mobile-menu-btn {
   transform: translateX(-5px);
 }
 
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.footer-link:hover {
+  color: var(--secondary-color);
+}
+
 .footer-bottom {
   display: flex;
   justify-content: center;
