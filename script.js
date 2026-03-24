@@ -89,20 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('LOCAL TEST NOTICE: Browser security might block form submission from a local file. For best results, run on a local server or test the live site.');
             }
 
-            // Send to FormSubmit via AJAX so we don't leave the page
-            fetch("https://formsubmit.co/ajax/130kathleenroad@gmail.com", {
+            // Send to internal API
+            fetch("/api/request-viewing", {
                 method: "POST",
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: formData
+                body: JSON.stringify(Object.fromEntries(formData))
             })
                 .then(response => response.json())
                 .then(data => {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
 
-                    if (data.success === 'true' || data.success) {
+                    if (data.success) {
                         // Hide form, show success
                         bookingForm.reset();
                         formSuccess.classList.add('active');
@@ -112,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             formSuccess.classList.remove('active');
                         }, 5000);
                     } else {
-                        console.error('FormSubmit Error:', data);
-                        alert('Oops! There was a problem submitting your form. If this is the first time using this email, please check your inbox for an activation email from FormSubmit and confirm it.');
+                        console.error('API Error:', data);
+                        alert('Oops! There was a problem submitting your form. Please try again.');
                     }
                 })
                 .catch(error => {
