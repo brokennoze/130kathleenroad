@@ -23,7 +23,7 @@ This project is a modern, high-conversion property brochure for **130 Kathleen R
 
 ## 📂 Project Structure
 
-- `scripts/`: All administrative PowerShell scripts (Deployment, Setup, Gallery Generation).
+- `mscripts/`: All administrative PowerShell scripts (Deployment, Setup, Gallery Generation).
 - `docs/`: Historical documentation and setup guides.
 - `images/`: Property photography organized by room/category.
 - `legacy/`: Archive of the previous static-only deployment infrastructure.
@@ -43,7 +43,7 @@ The server will run on `http://localhost:8080`.
 #### Step A: Setup (First Time)
 Initialize your GCP project and billing:
 ```powershell
-.\scripts\setup_gcp_project.ps1 -ProjectId YOUR_PROJECT_ID
+.\mscripts\setup_gcp_project.ps1 -ProjectId YOUR_PROJECT_ID
 ```
 
 #### Step B: Environment Config
@@ -52,7 +52,7 @@ Create a `.env` file from `.env.example`. This is crucial for handling email not
 #### Step C: Deploy
 Run the unified deployment script which automatically generates the latest gallery and pushes to the cloud:
 ```powershell
-.\scripts\deploy_app_engine.ps1
+.\mscripts\deploy_app_engine.ps1
 ```
 
 ---
