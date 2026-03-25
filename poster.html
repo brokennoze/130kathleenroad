@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sale - 130 Kathleen Road (A3 Poster)</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0c4a6e;
+            --secondary: #cda434;
+            /* OpenMover Gold */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --white: #ffffff;
+        }
+
+        @page {
+            margin: 0;
+            size: A1 landscape;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0;
+            /* Darker backdrop so the white poster stands out on screen */
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .poster-container {
+            width: 841mm;
+            height: 594mm;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .poster-main {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Left Side: Images (approx 55%) */
+        .poster-images {
+            width: 55%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 65%;
+            object-fit: cover;
+        }
+
+        .secondary-images {
+            display: flex;
+            height: 35%;
+            width: 100%;
+        }
+
+        .secondary-img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-top: 4px solid var(--white);
+        }
+
+        .secondary-img:first-child {
+            border-right: 2px solid var(--white);
+        }
+
+        .secondary-img:last-child {
+            border-left: 2px solid var(--white);
+        }
+
+        /* Header Full Width */
+        .header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 100px 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-bottom: 8px solid var(--white);
+            box-sizing: border-box;
+        }
+
+        .branding-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 7rem;
+            font-weight: 800;
+            letter-spacing: 8px;
+            margin: 0;
+        }
+
+        .branding-text span {
+            color: var(--secondary);
+        }
+
+        .status-badge {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 50px 70px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 7rem;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            border-radius: 16px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Footer Full Width */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 70px 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-top: 8px solid var(--white);
+            box-sizing: border-box;
+        }
+
+        /* Right Side: Details (approx 45%) */
+        .poster-details {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: var(--light);
+            border-left: 4px solid var(--secondary);
+        }
+
+        /* Content Area inside Right Column */
+        .content {
+            padding: 85px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 40px;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            padding: 65px;
+            border-radius: 24px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            font-weight: 600;
+            font-size: 3.5rem;
+            color: var(--dark);
+        }
+
+        .feature-item i {
+            color: var(--secondary);
+            font-size: 3.5rem;
+            width: 70px;
+            text-align: center;
+        }
+
+        .description {
+            font-size: 1.35rem;
+            line-height: 1.6;
+            margin-bottom: auto;
+            /* Pushes the CTA to the bottom */
+            color: var(--text);
+        }
+
+        /* Bottom Call to Action */
+        .cta-box {
+            background: var(--white);
+            border: 6px solid var(--primary);
+            border-radius: 28px;
+            padding: 65px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(12, 74, 110, 0.1);
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .cta-text {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .cta-text h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            line-height: 1.1;
+        }
+
+        .website-link {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: inline-block;
+            background: var(--dark);
+            padding: 10px 25px;
+            border-radius: 8px;
+        }
+
+        .qr-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .qr-code {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .qr-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 35px 0 0 0;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .print-controls {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(5px);
+        }
+
+        .print-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media print {
+            @page {
+                size: A1 landscape;
+                margin: 0;
+            }
+
+            html,
+            body {
+                width: 841mm;
+                height: 594mm;
+                margin: 0;
+                padding: 0;
+            }
+
+            .print-controls {
+                display: none !important;
+            }
+
+            body {
+                background-color: var(--white);
+            }
+
+            .poster-container {
+                box-shadow: none;
+                width: 841mm !important;
+                height: 594mm !important;
+            }
+
+            .price-tag {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="print-controls">
+        <button onclick="window.print()" class="print-btn"><i class="fas fa-print"></i> Print A1 High-Res
+            Poster</button>
+        <p style="margin: 10px 0 0 0; font-size: 1.1rem; color: var(--text);">Recommended: 300dpi, Landscape, "Save as
+            PDF" first or Print Direct to A1 paper.</p>
+    </div>
+
+    <div class="poster-container" id="poster">
+
+        <!-- Full Width Header -->
+        <div class="header">
+            <h1 class="branding-text">OPEN<span>MOVER</span></h1>
+        </div>
+
+        <div class="poster-main">
+            <!-- Left Side: Dramatic Imagery -->
+            <div class="poster-images">
+                <img src="images/_1Kitchen-Diner/Open Doors.jpeg" alt="South Facing Garden in Bloom" class="hero-img">
+
+                <div class="secondary-images">
+                    <img src="images/_13Entrance Hallway/WhatsApp Image 2026-03-21 at 17.50.17.jpeg"
+                        alt="Modern Kitchen" class="secondary-img">
+                    <img src="images/_1Kitchen-Diner/Dining Area 2.jpeg" alt="Evening Lounge" class="secondary-img">
+                </div>
+            </div>
+
+            <!-- Right Side: Details & CTA -->
+            <div class="poster-details">
+                <div class="content">
+
+                    <div class="features-grid">
+                        <div class="feature-item"><i class="fas fa-bed"></i> 4 Bedrooms</div>
+                        <div class="feature-item"><i class="fas fa-bath"></i> 2 Bathrooms</div>
+                        <div class="feature-item"><i class="fas fa-couch"></i> Open Plan Living</div>
+                        <div class="feature-item"><i class="fas fa-tree"></i> Huge South Garden</div>
+                    </div>
+
+                    <div class="cta-box">
+                        <div class="qr-wrapper">
+                            <!-- High Resolution QR Code via Google Chart API -->
+                            <img src="./images/qr-130kathleenroad.svg" alt="QR Code" class="qr-code">
+                            <p class="qr-label">Scan For Brochure</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Width Footer -->
+        <div class="footer">
+            <div class="status-badge">For Sale</div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
