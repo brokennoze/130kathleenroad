@@ -1,28 +1,59 @@
-# 130 Kathleen Road | Property Brochure
+# 130 Kathleen Road | Premium Property Brochure
 
-A modern, responsive property brochure for 130 Kathleen Road, Southampton (SO19 8LN). 
+This project is a modern, high-conversion property brochure for **130 Kathleen Road, Southampton (SO19 8LN)**. It combines premium web design with an automated lead generation funnel.
 
-## Technology Stack
-- **Frontend**: HTML5, Vanilla CSS, Javascript.
-- **Backend**: Node.js (Express) hosted on Google Cloud App Engine.
-- **Features**: Interactive floorplan, glassmorphism UI, automated email viewing requests, and a purchase eligibility questionnaire.
+## 🚀 Key Features
 
-## Deployment Instructions
+- **Interactive Experience**: 
+  - Glassmorphism-based UI for a fresh, summer-inspired aesthetic.
+  - Interactive floorplan with immersive room "fly-through" transitions.
+  - Full-screen lightbox gallery for high-resolution property photography.
+- **Conversion Funnel**:
+  - **Booking Modal**: A prominent success modal replaces simple toasts to ensure users see the next steps.
+  - **Lead Management**: Automated "Request Viewing" system that captures user details and site-wide state.
+  - **Eligibility Questionnaire**: A dedicated workflow to qualify potential buyers, pre-filling data from the booking step.
+- **Automation**:
+  - **Dynamic Gallery**: A PowerShell-based generator that rebuilds the `gallery.html` page based on the contents of the `/images` folder.
 
-### 1. Initialize Project (First Time)
-Ensure you have the Google Cloud SDK installed and logged in.
+## 🛠️ Technology Stack
+
+- **Frontend**: Standard HTML5, Vanilla CSS, and modular Vanilla JS. Focuses on performance and smooth animations (Intersection Observer, custom transitions).
+- **Backend**: Node.js & Express server.
+- **Infrastructure**: Hosted on **Google Cloud App Engine** for scalable, server-side dynamic handling.
+
+## 📂 Project Structure
+
+- `scripts/`: All administrative PowerShell scripts (Deployment, Setup, Gallery Generation).
+- `docs/`: Historical documentation and setup guides.
+- `images/`: Property photography organized by room/category.
+- `legacy/`: Archive of the previous static-only deployment infrastructure.
+
+## 🏁 Getting Started
+
+### 1. Local Development
+Ensure you have Node.js installed.
+```bash
+npm install
+npm start
+```
+The server will run on `http://localhost:8080`.
+
+### 2. Deployment (Google App Engine)
+
+#### Step A: Setup (First Time)
+Initialize your GCP project and billing:
 ```powershell
-.\setup_gcp_project.ps1 -ProjectId YOUR_PROJECT_ID
+.\scripts\setup_gcp_project.ps1 -ProjectId YOUR_PROJECT_ID
 ```
 
-### 2. Configure Environment Variables
-Copy `.env.example` to `.env` and fill in your email credentials (Gmail with App Password recommended). Update `app.yaml` with the same values for production.
+#### Step B: Environment Config
+Create a `.env` file from `.env.example`. This is crucial for handling email notifications and booking data.
 
-### 3. Deploy to App Engine
-Use the new deployment script:
+#### Step C: Deploy
+Run the unified deployment script which automatically generates the latest gallery and pushes to the cloud:
 ```powershell
-.\deploy_app_engine.ps1 -ProjectId YOUR_PROJECT_ID
+.\scripts\deploy_app_engine.ps1
 ```
 
-## Legacy Infrastructure
-The original static bucket-based deployment scripts are stored in the `/legacy` folder for reference.
+---
+*Powered by OpenMover*

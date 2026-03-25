@@ -104,14 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.disabled = false;
 
                     if (data.success) {
-                        // Hide form, show success
+                        // Reset form
                         bookingForm.reset();
-                        formSuccess.classList.add('active');
 
-                        // Reset success message after 5 seconds
-                        setTimeout(() => {
-                            formSuccess.classList.remove('active');
-                        }, 5000);
+                        // Populate and show success modal
+                        const successModal = document.getElementById('successModal');
+                        const questionnaireLink = document.getElementById('modalQuestionnaireLink');
+                        const email = formData.get('email');
+
+                        if (questionnaireLink && email) {
+                            questionnaireLink.href = `questionnaire.html?email=${encodeURIComponent(email)}`;
+                        }
+
+                        if (successModal) {
+                            successModal.classList.add('active');
+                            document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        }
                     } else {
                         console.error('API Error:', data);
                         alert('Oops! There was a problem submitting your form. Please try again.');
@@ -275,5 +283,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // === Success Modal Closing Logic ===
+    const successModal = document.getElementById('successModal');
+    const closeSuccessModal = document.getElementById('closeSuccessModal');
+
+    const closeSuccessModalFunc = () => {
+        if (successModal) {
+            successModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    };
+
+    if (closeSuccessModal) {
+        closeSuccessModal.addEventListener('click', closeSuccessModalFunc);
+    }
+
+    if (successModal) {
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                closeSuccessModalFunc();
+            }
+        });
+    }
+
+    // Add to existing Esc key handler
+    window.addEventListener('keydown', (e) => {
+        if ((e.key === 'Escape' || e.keyCode === 27) && successModal && successModal.classList.contains('active')) {
+            closeSuccessModalFunc();
+        }
+    });
 
 });

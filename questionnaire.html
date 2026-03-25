@@ -201,8 +201,10 @@
 
             <div
                 style="background: rgba(205, 164, 52, 0.1); border-left: 3px solid #cda434; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 14px; line-height: 1.5; color: #e0e0e0;">
-                <strong style="color: #cda434; display: block; margin-bottom: 5px;">We're excited to show you 130 Kathleen Road!</strong>
-                To help us prioritize your viewing and ensure everything is ready for your move, please tell us a little more about your current position. This information helps us assist you as effectively as possible.
+                <strong style="color: #cda434; display: block; margin-bottom: 5px;">We're excited to show you 130
+                    Kathleen Road!</strong>
+                To help us prioritize your viewing and ensure everything is ready for your move, please tell us a little
+                more about your current position. This information helps us assist you as effectively as possible.
             </div>
 
             <form id="eligibilityForm">
@@ -210,7 +212,8 @@
 
                 <div class="q-group" id="livingSituationGroup">
                     <label class="q-label">What is your current living situation?</label>
-                    <span class="sub-caption">Are you currently renting, living with family, or do you own your home? This helps us understand your timeline.</span>
+                    <span class="sub-caption">Are you currently renting, living with family, or do you own your home?
+                        This helps us understand your timeline.</span>
                     <select name="livingSituation" id="livingSituation" required>
                         <option value="" disabled selected>Select...</option>
                         <option value="renting">Renting</option>
@@ -223,7 +226,8 @@
 
                 <div class="q-group">
                     <label class="q-label">How would you describe your buying position?</label>
-                    <span class="sub-caption">For example, are you a first-time buyer or do you have a property to sell first?</span>
+                    <span class="sub-caption">For example, are you a first-time buyer or do you have a property to sell
+                        first?</span>
                     <select name="status" id="buyerStatus" required>
                         <option value="" disabled selected>Select from the following...</option>
                         <option value="first-time">First-time Buyer</option>
@@ -274,14 +278,16 @@
                 <div class="form-row" style="display: flex; gap: 20px;">
                     <div class="q-group" style="flex: 1;">
                         <label class="q-label">What deposit amount do you have available?</label>
-                        <span class="sub-caption">Please enter the percentage (%) of the purchase price you have as a deposit.</span>
+                        <span class="sub-caption">Please enter the percentage (%) of the purchase price you have as a
+                            deposit.</span>
                         <input type="number" name="deposit" min="0" max="100" placeholder="e.g. 15" required>
                     </div>
                 </div>
 
                 <div class="q-group">
                     <label class="q-label">Do you have a Mortgage in Principle (AIP/MIP)?</label>
-                    <span class="sub-caption">This is a document from a lender confirming they are ready to fund your purchase.</span>
+                    <span class="sub-caption">This is a document from a lender confirming they are ready to fund your
+                        purchase.</span>
                     <select name="mortgage" required>
                         <option value="" disabled selected>Select...</option>
                         <option value="yes">Yes, I have one approved</option>
@@ -294,7 +300,8 @@
 
                 <div class="q-group">
                     <label class="q-label">Have you chosen a solicitor to help with the move?</label>
-                    <span class="sub-caption">Having a solicitor ready early on can really help speed things up later.</span>
+                    <span class="sub-caption">Having a solicitor ready early on can really help speed things up
+                        later.</span>
                     <select name="solicitor" required>
                         <option value="no">Not yet</option>
                         <option value="yes">Yes, I've already instructed one</option>
@@ -305,7 +312,8 @@
 
                 <div class="q-group">
                     <label class="q-label">Would you like to provide proof of funds now?</label>
-                    <span class="sub-caption">Providing this (optional) helps us prioritize your request. A PDF or clear photo works great.</span>
+                    <span class="sub-caption">Providing this (optional) helps us prioritize your request. A PDF or clear
+                        photo works great.</span>
                     <input type="file" name="proofOfFunds" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
@@ -343,11 +351,15 @@
             <a href="index.html" class="btn-back">Back to Home</a>
         </div>
 
-        <!-- Footer placeholder -->
-        <div id="footer-placeholder"></div>
+        <!-- Footnote -->
+        <div id="footer-footnote"
+            style="text-align: center; color: #666; font-size: 13px; margin-top: 40px; padding-bottom: 20px; font-weight: 500;">
+            Powered by <a href="https://www.openmover.co.uk" target="_blank"
+                style="color: #cda434; text-decoration: none;">OpenMover</a>
+        </div>
     </div>
 
-    <script src="footer-loader.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -420,6 +432,8 @@
                     if (response.ok) {
                         formPanel.style.display = 'none';
                         successPanel.classList.add('active');
+                        const footnote = document.getElementById('footer-footnote');
+                        if (footnote) footnote.style.display = 'none';
                         window.scrollTo(0, 0);
                     } else {
                         alert('Submission failed. Please try again.');

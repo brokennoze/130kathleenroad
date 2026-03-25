@@ -393,9 +393,7 @@
                     <input type="text" name="_honey" style="display:none">
                     <button type="submit" class="btn-primary btn-block">Request Viewing</button>
 
-                    <div id="formSuccess" class="form-success">
-                        <i class="fas fa-check-circle"></i> <strong>Request Sent!</strong> Please check your email to complete the required <strong>Eligibility Questionnaire</strong> so we can confirm your viewing.
-                    </div>
+
                 </form>
             </div>
         </div>
@@ -413,6 +411,29 @@
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
         <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-modal-header">
+                <div class="success-icon-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2>Request Sent!</h2>
+            </div>
+            <div class="success-modal-body">
+                <p>Thank you for your interest in <strong>130 Kathleen Road</strong>. Your viewing request has been received.</p>
+                <div class="requirement-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>IMPORTANT:</strong> To confirm your appointment, please complete our brief eligibility questionnaire now. This helps us prioritize your request.</p>
+                </div>
+            </div>
+            <div class="success-modal-footer">
+                <a href="#" id="modalQuestionnaireLink" class="btn-primary btn-block">Complete Questionnaire Now</a>
+                <button id="closeSuccessModal" class="btn-secondary">Close</button>
+            </div>
+        </div>
     </div>
 
     <script src="footer-loader.js"></script>

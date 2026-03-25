@@ -1,7 +1,0 @@
-runtime: nodejs22
-instance_class: F1
-env_variables:
-  # These are placeholders injected by the deployment script
-  EMAIL_USER: "${EMAIL_USER}"
-  EMAIL_PASS: "${EMAIL_PASS}"
-  ADMIN_EMAIL: "${ADMIN_EMAIL}"

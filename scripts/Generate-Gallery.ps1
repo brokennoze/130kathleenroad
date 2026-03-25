@@ -1,5 +1,5 @@
-$htmlFilePath = "d:\Projects\March 2026\Soutuhampton Brochure\gallery.html"
-$imagesDirPath = "d:\Projects\March 2026\Soutuhampton Brochure\images"
+$htmlFilePath = Join-Path $PSScriptRoot "..\gallery.html"
+$imagesDirPath = Join-Path $PSScriptRoot "..\images"
 $htmlContent = [System.IO.File]::ReadAllText($htmlFilePath)
 
 # Markers

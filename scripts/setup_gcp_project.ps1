@@ -55,5 +55,5 @@ gcloud services enable storage-api.googleapis.com
 Write-Host "`n=======================================================" -ForegroundColor Cyan
 Write-Host "Project Setup Complete! 🎉" -ForegroundColor Green
 Write-Host "You can now run your deployment script using:" -ForegroundColor White
-Write-Host "  .\deploy_gcp.ps1 -ProjectId `"$ProjectId`" -BucketName `"$ProjectId-bucket`"" -ForegroundColor White
+Write-Host "  .\scripts\deploy_app_engine.ps1" -ForegroundColor White
 Write-Host "=======================================================" -ForegroundColor Cyan
